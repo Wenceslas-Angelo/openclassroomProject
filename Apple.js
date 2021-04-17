@@ -30,3 +30,5 @@ class Apple{
         }
     }
 }
+
+export {Apple}

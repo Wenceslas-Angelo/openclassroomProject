@@ -1,3 +1,6 @@
+import {Snake} from './Snake.js'
+import {Apple} from './Apple.js'
+
 window.onload = function(){
     let canvas;
     let context;
@@ -15,6 +18,7 @@ window.onload = function(){
         canvas.width =  canvasWidth;
         canvas.height = canvasHeight;
         canvas.style.border = "5px solid black";
+        canvas.style.marginLeft = "20%";
         document.body.appendChild(canvas);
         context = canvas.getContext('2d');
         //Creation du serpent
@@ -27,11 +31,12 @@ window.onload = function(){
         snakee.advanceSnake();
         if(snakee.checkCollision(canvasWidth/blockSize,canvasHeight/blockSize)){
             //Game Over
+            gameOver();
         }else{
             if(snakee.isEatingApple(applee)){
                 snakee.ateApple = true;
                 score++;
-                delay-=20;
+                delay-=30;
                 do{
                     applee.setNewPosition(canvasWidth/blockSize,canvasHeight/blockSize);
                 }while(applee.isOnSnake(snakee));
@@ -66,17 +71,29 @@ window.onload = function(){
         snakee.setDirection(newDirection);
     }
 
-function drawScore(){
-    context.save();
-    context.font = "bold 200px sans-serif ";
-    context.fillStyle = "gray";
-    context.textAligne = "center";
-    context.textBaseLine = "middle";
-    let centerX = canvasWidth/2;
-    let centerY = canvasHeight/2;
-    context.fillText(score.toString(),centerX-50,centerY);
-    context.restore();
-}
+    function drawScore(){
+        context.save();
+        context.font = "bold 200px sans-serif ";
+        context.fillStyle = "gray";
+        context.textAligne = "center";
+        context.textBaseLine = "middle";
+        let centerX = canvasWidth/2;
+        let centerY = canvasHeight/2;
+        context.fillText(score.toString(),centerX-50,centerY);
+        context.restore();
+    }
+
+    function gameOver(){
+        context.save();
+        context.font = "bold 100px sans-serif ";
+        context.fillStyle = "gray";
+        context.textAligne = "center";
+        context.textBaseLine = "middle";
+        let centerX = canvasWidth/3;
+        let centerY = canvasHeight-100;
+        context.fillText("Game over",centerX-50,centerY);
+        context.restore();
+    }
 
     init();
 }

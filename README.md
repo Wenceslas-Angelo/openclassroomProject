@@ -1,1 +1,1 @@
-# openclassroomProject
+Snake game

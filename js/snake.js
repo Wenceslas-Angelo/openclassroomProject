@@ -1,4 +1,4 @@
-class Snake{
+export class Snake{
     
     constructor(body,direction){
         this.body = body;
@@ -88,5 +88,3 @@ class Snake{
         }
     }
 }
-
-export {Snake}

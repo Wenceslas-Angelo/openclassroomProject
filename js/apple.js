@@ -1,4 +1,4 @@
-class Apple{
+export class Apple{
     constructor(position){
         this.position = position;
     }
@@ -30,5 +30,3 @@ class Apple{
         }
     }
 }
-
-export {Apple}
